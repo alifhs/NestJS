@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -9,4 +9,10 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+  @Get(':id')
+  findOne(@Param() params): string {
+    console.log(params.id);
+    return `This action returns a #${params.id} cat`;
+  }
+
 }
